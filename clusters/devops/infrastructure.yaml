@@ -1,0 +1,20 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: infrastructure
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  path: ./infrastructure
+  prune: true
+  validation: client
+  postBuild:
+    substitute:
+      #true of false does not matter, there has to be at least one variable
+      var_substitution_enabled: "true"
+      cluster_env: "devops"
+      cluster_name: "devops"
+      cluster_region: "us-west-2"
