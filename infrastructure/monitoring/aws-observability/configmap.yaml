@@ -9,7 +9,7 @@ data:
     [OUTPUT]
         Name cloudwatch_logs
         Match   *
-        region us-east-1
-        log_group_name /aws/eks/${cluster_name}/fluent-bit-cloudwatch
+        region ${cluster_region}
+        log_group_name /aws/eks/${cluster_name}/fluent-bit-fargate
         log_stream_prefix from-fb-
         auto_create_group true
