@@ -222,6 +222,8 @@ kind: ConfigMap
 metadata:
   name: prometheus-config
   namespace: amazon-cloudwatch
+  annotations: 
+    kustomize.toolkit.fluxcd.io/substitute: disabled 
 data:
   # prometheus config
   prometheus.yaml: |
