@@ -6,18 +6,20 @@ kind: ConfigMap
 metadata:
   name: prometheus-cwagentconfig
   namespace: amazon-cloudwatch
+  annotations: 
+    kustomize.toolkit.fluxcd.io/substitute: disabled 
 data:
   # cwagent json config
   cwagentconfig.json: |
     {
       "agent": {
-        "region": "${cluster_region}"
+        "region": "us-west2"
       },
       "logs": {
         "metrics_collected": {
           "prometheus": {
-            "cluster_name": "${cluster_name}",
-            "log_group_name": "/aws/containerinsights/${cluster_name}/prometheus",
+            "cluster_name": "devops",
+            "log_group_name": "/aws/containerinsights/devops/prometheus",
             "prometheus_config_path": "/etc/prometheusconfig/prometheus.yaml",
             "emf_processor": {
               "metric_declaration": [
