@@ -215,6 +215,7 @@ data:
     }
 ---
 # create configmap for prometheus scrape config
+# var substitution is disabled
 apiVersion: v1
 kind: ConfigMap
 metadata:
