@@ -10,6 +10,21 @@ data:
         Name cloudwatch_logs
         Match   *
         region ${cluster_region}
-        log_group_name /aws/eks/${cluster_name}/fluent-bit-fargate
+        log_group_name /aws/containerinsights/${cluster_name}/fluent-bit-fargate
         log_stream_prefix from-fb-
         auto_create_group true
+  filters.conf: |
+    [FILTER]
+        Name parser
+        Match *
+        Key_name log
+        Parser parser
+  parsers.conf: |
+    [PARSER]
+        Name parser
+        Format regex
+        Regex ^(?<time>[^ ]+) (?<stream>[^ ]+) (?<logtag>[^ ]+) (?<message>.+)$
+        Time_Key time
+        Time_Format %Y-%m-%dT%H:%M:%S.%L%z
+        Time_Keep On
+        Decode_Field_As json message
