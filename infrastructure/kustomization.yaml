@@ -4,4 +4,4 @@ resources:
   - sources
   - secrets
   - monitoring
-  #- ingress
+  - ingress
