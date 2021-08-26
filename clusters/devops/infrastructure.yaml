@@ -18,3 +18,4 @@ spec:
       cluster_env: "devops"
       cluster_name: "devops"
       cluster_region: "us-west-2"
+      cluster_vpc: "vpc-670e3100"
