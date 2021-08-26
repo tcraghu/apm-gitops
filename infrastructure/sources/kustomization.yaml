@@ -3,5 +3,5 @@ kind: Kustomization
 namespace: flux-system
 resources:
   - secrets.yaml
-  - kube-state-metrics.yaml
   - eks-charts.yaml
+  - prometheus.yaml
