@@ -25,15 +25,20 @@ flux check --pre
 # Bootstrap Flux on EKS Cluster
 
 Make sure you have setup Git `Personal Access Token` in the environment variable `GITHUB_TOKEN`
+<details>
+<summary>Windows Powershell</summary>
 
-```bat
-#Windows Powershell
+```ps1
 $Env:GITHUB_TOKEN="<personal-access-token-for-service-account>"
 ```
+</details> 
+<details>
+<summary>Linux</summary>
+
 ```bash
-#Linux
 export GITHUB_TOKEN=<personal-access-token-for-service-account>
 ```
+</details> 
 
 Make sure you have correct values for the following arguments:
 
@@ -46,10 +51,11 @@ Make sure you have correct values for the following arguments:
 `branch` --> branch on the repository to use for gitops e.g., "main"
 
 Execute the following command to bootstrap Flux onto the Cluster and linked with the repository.
+<details>
+<summary>Windows Powershell</summary>
 
-```bat
+```ps1
 #Use the correct values of the arguments according to your environment
-#Windows Powershell
 flux bootstrap github `
 --owner=tcraghu `
 --repository=apm-gitops `
@@ -58,8 +64,12 @@ flux bootstrap github `
 --token-auth `
 --personal
 ```
+</details> 
+<details>
+<summary>Linux</summary>
+
 ```bash
-#Linux
+#Use the correct values of the arguments according to your environment
 flux bootstrap github \
 --owner=tcraghu \
 --repository=apm-gitops \
@@ -68,5 +78,6 @@ flux bootstrap github \
 --token-auth \
 --personal
 ```
+</details> 
 
 It is recommended to use [Terraform provider for Flux](https://github.com/fluxcd/terraform-provider-flux) to automate Flux bootstrap via Terraform.
