@@ -9,7 +9,7 @@ You must have the following working on your machine from where you want to boots
 * You must have access to the repository e.g., this repository.
 * You must have Git `Personal Access Token` that will be used by Flux.
 * You must have working target EKS Cluster.
-    * If your are using Fargate only cluster, you must have Fargate profile with selector for Kubernetes `namespace` "flux-system"
+    * If your are using Fargate only cluster, you must have Fargate profile with selector for the Kubernetes `namespace` "flux-system"
 * `kubectl` configured to access the EKS Cluster
     * `.kube/config` has the required information to access the cluster.
 * `Flux CLI` [installed](https://fluxcd.io/docs/installation/#install-the-flux-cli).
@@ -40,7 +40,7 @@ Make sure you have correct values for the following arguments:
 
 `branch` --> branch on the repository to use for gitops e.g., "main"
 
-Execute the following command to bootstrap Flux onto the Cluster and link with the repository.
+Execute the following command to bootstrap Flux onto the Cluster and linked with the repository.
 
     #Use the correct values of the arguments according to your environment
     #Windows Powershell
