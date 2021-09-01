@@ -16,19 +16,24 @@ You must have the following working on your machine from where you want to boots
 
 Execute following command to check you have everything needed to run Flux:
 
-    flux check --pre
-    ...
-    ✔ prerequisites checks passed
+```bash
+flux check --pre
+...
+✔ prerequisites checks passed
+```
 
 # Bootstrap Flux on EKS Cluster
 
 Make sure you have setup Git `Personal Access Token` in the environment variable `GITHUB_TOKEN`
 
-    #Windows Powershell
-    $Env:GITHUB_TOKEN="<personal-access-token-for-service-account>"
-
-    #Linux
-    export GITHUB_TOKEN=<personal-access-token-for-service-account>
+```bat
+#Windows Powershell
+$Env:GITHUB_TOKEN="<personal-access-token-for-service-account>"
+```
+```bash
+#Linux
+export GITHUB_TOKEN=<personal-access-token-for-service-account>
+```
 
 Make sure you have correct values for the following arguments:
 
@@ -42,23 +47,26 @@ Make sure you have correct values for the following arguments:
 
 Execute the following command to bootstrap Flux onto the Cluster and linked with the repository.
 
-    #Use the correct values of the arguments according to your environment
-    #Windows Powershell
-    flux bootstrap github `
-    --owner=tcraghu `
-    --repository=apm-gitops `
-    --path=clusters/devops `
-    --branch main `
-    --token-auth `
-    --personal
-
-    #Linux
-    flux bootstrap github \
-    --owner=tcraghu \
-    --repository=apm-gitops \
-    --path=clusters/devops \
-    --branch main \
-    --token-auth \
-    --personal
+```bat
+#Use the correct values of the arguments according to your environment
+#Windows Powershell
+flux bootstrap github `
+--owner=tcraghu `
+--repository=apm-gitops `
+--path=clusters/devops `
+--branch main `
+--token-auth `
+--personal
+```
+```bash
+#Linux
+flux bootstrap github \
+--owner=tcraghu \
+--repository=apm-gitops \
+--path=clusters/devops \
+--branch main \
+--token-auth \
+--personal
+```
 
 It is recommended to use [Terraform provider for Flux](https://github.com/fluxcd/terraform-provider-flux) to automate Flux bootstrap via Terraform.
