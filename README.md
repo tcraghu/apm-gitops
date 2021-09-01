@@ -1,4 +1,4 @@
-# apm-gitops
+# poc-gitops-flux-eks
 
 Proof-of-Concept for GitOps using [Flux](https://fluxcd.io/) on [Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS)
 
@@ -6,14 +6,15 @@ Proof-of-Concept for GitOps using [Flux](https://fluxcd.io/) on [Elastic Kuberne
 
 You must have the following working on your machine from where you want to bootstrap the Flux on a EKS Cluster.
 
-* You must have access to the repository e.g. this repository.
+* You must have access to the repository e.g., this repository.
 * You must have Git `Personal Access Token` that will be used by Flux.
-* You must working target EKS Cluster.
-    * If using Fargate only cluster, you must have Fargate profile with selector for Kubernetes `namespace` "flux-system"
+* You must have working target EKS Cluster.
+    * If your are using Fargate only cluster, you must have Fargate profile with selector for Kubernetes `namespace` "flux-system"
 * `kubectl` configured to access the EKS Cluster
     * `.kube/config` has the required information to access the cluster.
 * `Flux CLI` [installed](https://fluxcd.io/docs/installation/#install-the-flux-cli).
-* Execute following command to check you have everything needed to run Flux:
+
+Execute following command to check you have everything needed to run Flux:
 
     flux check --pre
     ...
@@ -29,15 +30,15 @@ Make sure you have setup Git `Personal Access Token` in the environment variable
     #Linux
     export GITHUB_TOKEN=<personal-access-token-for-service-account>
 
-Make sure your have correct values for the following arugments:
+Make sure you have correct values for the following arguments:
 
-`owner` --> owner of the repository e.g. "tcraghu"
+`owner` --> owner of the repository e.g., "tcraghu"
 
-`repository` --> name of hte repository e.g. "apm-gitpos"
+`repository` --> name of the repository e.g., "apm-gitpos"
 
-`path` --> path with respect to the root of the repository for the cluster bootstrap files e.g. "clusters/devpos"
+`path` --> path with respect to the root of the repository for the cluster bootstrap files e.g., "clusters/devpos"
 
-`branch` --> branch on the repository to use for gitops e.g. "main"
+`branch` --> branch on the repository to use for gitops e.g., "main"
 
 Execute the following command to bootstrap Flux onto the Cluster and link with the repository.
 
@@ -60,4 +61,4 @@ Execute the following command to bootstrap Flux onto the Cluster and link with t
     --token-auth \
     --personal
 
-It is recommended to use [Terrafor provider for Flux](https://github.com/fluxcd/terraform-provider-flux) to automate Flux bootstrap via Terraform.
+It is recommended to use [Terraform provider for Flux](https://github.com/fluxcd/terraform-provider-flux) to automate Flux bootstrap via Terraform.
