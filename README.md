@@ -25,7 +25,7 @@ flux check --pre
 # Bootstrap Flux on EKS Cluster
 
 Make sure you have setup Git `Personal Access Token` in the environment variable `GITHUB_TOKEN`
-<details>
+<details open>
 <summary>Windows Powershell</summary>
 
 ```ps1
@@ -33,7 +33,7 @@ $Env:GITHUB_TOKEN="<personal-access-token-for-service-account>"
 ```
 </details> 
 <details>
-<summary>Linux</summary>
+<summary>Linux Bash</summary>
 
 ```bash
 export GITHUB_TOKEN=<personal-access-token-for-service-account>
@@ -51,7 +51,7 @@ Make sure you have correct values for the following arguments:
 `branch` --> branch on the repository to use for gitops e.g., "main"
 
 Execute the following command to bootstrap Flux onto the Cluster and linked with the repository.
-<details>
+<details open>
 <summary>Windows Powershell</summary>
 
 ```ps1
@@ -66,7 +66,7 @@ flux bootstrap github `
 ```
 </details> 
 <details>
-<summary>Linux</summary>
+<summary>Linux Bash</summary>
 
 ```bash
 #Use the correct values of the arguments according to your environment
