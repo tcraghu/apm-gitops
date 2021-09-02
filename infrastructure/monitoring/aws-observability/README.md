@@ -1,5 +1,5 @@
 # Container Logging for Amazon EKS on Fargate
-Amazon EKS on Fargate offers a built-in log router based on Fluent Bit. There is no need to deploy any other component.
+Amazon EKS on Fargate offers a built-in log router based on Fluent Bit. There is no need to deploy any other component. The ConfigMap `aws-logging` is configured to setup `[FILTER]`, `[OUTPUT]`, and `[PARSER]` for the Fluent Bit.
 
 ## Prerequisites
 * The Fargate pod execution role must have the `arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy` policy attached so that Fargate can send logs to CloudWatch
