@@ -5,4 +5,4 @@ metadata:
   name: aws-efs-csi-driver
 spec:
   interval: 30m
-  url: https://kubernetes-sigs.github.io/aws-efs-csi-driver
+  url: https://kubernetes-sigs.github.io/aws-efs-csi-driver/
