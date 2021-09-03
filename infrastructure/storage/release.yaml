@@ -7,7 +7,7 @@ spec:
   releaseName: aws-efs-csi-driver
   chart:
     spec:
-      chart: aws-efs-csi-driver
+      chart: aws-efs-csi-driver1
       sourceRef:
         kind: HelmRepository
         name: aws-efs-csi-driver
