@@ -9,7 +9,7 @@ spec:
     replicaCount: 2
 
     image:
-      repository: amazon/aws-efs-csi-driver
+      repository: 602401143452.dkr.ecr.us-west-2.amazonaws.com/eks/aws-efs-csi-driver
       tag: "v1.3.3"
       pullPolicy: IfNotPresent
 

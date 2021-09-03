@@ -13,7 +13,7 @@ spec:
         name: aws-efs-csi-driver
         namespace: flux-system
   interval: 15m
-  timeout: 10m0s
+  timeout: 10m
   install:
     remediation:
       retries: 3
@@ -28,7 +28,7 @@ spec:
     replicaCount: 2
 
     image:
-      repository: 602401143452.dkr.ecr.us-west-2.amazonaws.com/eks/aws-efs-csi-driver
+      repository: amazon/aws-efs-csi-driver
       tag: "v1.3.3"
       pullPolicy: IfNotPresent
 
