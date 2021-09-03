@@ -23,16 +23,6 @@ spec:
         ## Enable if EKS IAM for SA is used
         #  eks.amazonaws.com/role-arn: arn:aws:iam::111122223333:role/efs-csi-role
 
-    ## Node daemonset variables
-    node:
-      # Specifies whether a service account should be created
-      serviceAccount:
-        create: false
-        name: efs-csi-node-sa1
-        #annotations: {}
-        ## Enable if EKS IAM for SA is used
-        #  eks.amazonaws.com/role-arn: arn:aws:iam::111122223333:role/efs-csi-role
-
     storageClasses: 
     # Add StorageClass resources like:
       - name: efs-sc
