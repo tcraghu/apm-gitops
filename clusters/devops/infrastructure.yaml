@@ -19,4 +19,4 @@ spec:
       cluster_name: "devops"
       cluster_region: "us-west-2"
       cluster_vpc: "vpc-670e3100"
-      cluster_efs_handle: "fs-8f805589"
+      cluster_efs_handle: "fs-0434df622c961ff90"
