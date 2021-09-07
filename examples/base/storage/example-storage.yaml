@@ -61,10 +61,3 @@ spec:
     image: busybox
     command: ["/bin/sh"]
     args: ["-c", "sleep 3600"]
-    volumeMounts:
-    - name: persistent-storage
-      mountPath: /data
-  volumes:
-  - name: persistent-storage
-    persistentVolumeClaim:
-      claimName: efs-claim
