@@ -50,3 +50,21 @@ spec:
   - name: persistent-storage
     persistentVolumeClaim:
       claimName: efs-claim
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app3
+spec:
+  containers:
+  - name: app3
+    image: busybox
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo $(date -u) >> /data/out3.txt; sleep 5; done"]
+    volumeMounts:
+    - name: persistent-storage
+      mountPath: /data
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: efs-claim
