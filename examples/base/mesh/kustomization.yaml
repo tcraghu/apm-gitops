@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: default
 resources:
   - dj-base-app.yaml
+  - dj-mesh-app.yaml
