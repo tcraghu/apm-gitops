@@ -17,6 +17,7 @@ spec:
       var_substitution_enabled: "true"
       cluster_env: "devops"
       cluster_name: "devops"
+      cluster_account: "arn:aws:iam::007826922078:role\devops-appmesh-controller"
       cluster_region: "us-west-2"
       cluster_vpc: "vpc-670e3100"
       cluster_efs_handle: "fs-4404cd42"

@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: appmesh-controller
+spec:
+  releaseName: appmesh-controller
+  values:
+    replicaCount: 1
+    region: ${cluster_region}
+    accountId: ${cluster_account}
+    preview: false
+
+    serviceAccount:
+      # serviceAccount.create: Whether to create a service account or not
+      create: false
+      # serviceAccount.name: The name of the service account to create or use
+      name: "appmesh-controller"
+      # serviceAccount.annotations: optional annotations to be applied to service account
+      annotations: ""
+    tracing:
+      # tracing.enabled: `true` if Envoy should be configured tracing
+      enabled: true
+      # tracing.provider: can be x-ray, jaeger or datadog
+      provider: x-ray
