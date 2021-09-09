@@ -14,7 +14,7 @@ spec:
         protocol: http
       healthCheck:
         protocol: http
-        path: '/'
+        path: "/"
         healthyThreshold: 2
         unhealthyThreshold: 2
         timeoutMillis: 2000
@@ -22,10 +22,10 @@ spec:
   backends:
     - virtualService:
         virtualServiceRef:
-          name: jazz
+          name: metal
     - virtualService:
         virtualServiceRef:
-          name: metal
+          name: jazz
   serviceDiscovery:
     dns:
       hostname: dj.default.svc.cluster.local
@@ -71,8 +71,8 @@ metadata:
     app: dj
 spec:
   ports:
-  - port: 9080
-    name: http
+    - port: 9080
+      name: http
   selector:
     app: dj
 ---
@@ -109,8 +109,8 @@ metadata:
     app: jazz
 spec:
   ports:
-  - port: 9080
-    name: http
+    - port: 9080
+      name: http
 ---
 apiVersion: v1
 kind: Service
@@ -121,6 +121,7 @@ metadata:
     app: metal
 spec:
   ports:
-  - port: 9080
-    name: http
+    - port: 9080
+      name: http
 ---
+
