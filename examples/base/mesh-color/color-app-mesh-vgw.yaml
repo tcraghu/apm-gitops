@@ -259,6 +259,7 @@ spec:
       labels:
         app: ingress-gw
     spec:
+      serviceAccount: appmesh-pod
       containers:
         - name: envoy
           image: "840364872350.dkr.ecr.us-west-2.amazonaws.com/aws-appmesh-envoy:v1.19.1.0-prod"
