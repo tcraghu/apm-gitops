@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: default
+resources:
+  ### color app mesh example with ingress
+  - color-app-mesh-white.yaml
+  - color-app-mesh-yellow.yaml
+  - color-app-mesh-green.yaml
+  - color-app-mesh-blue.yaml
+  - color-app-mesh-red.yaml
+  - color-app-mesh-vgw.yaml
+  
