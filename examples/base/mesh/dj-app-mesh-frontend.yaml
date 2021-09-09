@@ -89,7 +89,7 @@ metadata:
   name: metal
   namespace: default
 spec:
-  awsName: metal.prod.svc.cluster.local
+  awsName: metal.default.svc.cluster.local
   provider:
     virtualRouter:
       virtualRouterRef:
