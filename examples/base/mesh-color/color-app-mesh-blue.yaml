@@ -11,7 +11,7 @@ spec:
       version: blue
   listeners:
     - portMapping:
-        port: 8080
+        port: 9080
         protocol: http
       healthCheck:
         protocol: http
@@ -31,7 +31,7 @@ metadata:
   namespace: default
 spec:
   ports:
-    - port: 8080
+    - port: 9080
       name: http
   selector:
     app: color
@@ -61,7 +61,7 @@ spec:
         - name: app
           image: "672518094988.dkr.ecr.us-west-2.amazonaws.com/hello-world:v1.0"
           ports:
-            - containerPort: 8080
+            - containerPort: 9080
           env:
             - name: "HW_RESPONSE"
               value: "blue"
