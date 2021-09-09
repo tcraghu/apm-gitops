@@ -2,5 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: default
 resources:
-  - dj-base-app.yaml
-  - dj-mesh-app.yaml
+  - dj-app-mesh.yaml
+  - dj-app-mesh-backend-v1.yaml
+  - dj-app-mesh-frontend.yaml
+  - dj-mesh-router-v1.yaml
+  #- dj-app-mesh-backend-v2.yaml
+  #- dj-mesh-router-v1-95-v2-5.yaml
+  #- dj-mesh-router-v1-5-v2-95.yaml
+  #- dj-mesh-router-v2.yaml
+  

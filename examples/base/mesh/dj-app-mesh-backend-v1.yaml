@@ -1,30 +1,52 @@
----
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
 metadata:
-  name: dj
+  name: jazz-v1
   namespace: default
 spec:
-  replicas: 1
-  selector:
+  podSelector:
     matchLabels:
-      app: dj
+      app: jazz
       version: v1
-  template:
-    metadata:
-      labels:
-        app: dj
-        version: v1
-    spec:
-      containers:
-        - name: dj
-          image: "672518094988.dkr.ecr.us-west-2.amazonaws.com/hello-world:v1.0"
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 9080
-          env:
-            - name: "HW_RESPONSE"
-              value: "DJ Reporting for duty!"
+  listeners:
+    - portMapping:
+        port: 9080
+        protocol: http
+      healthCheck:
+        protocol: http
+        path: '/ping'
+        healthyThreshold: 2
+        unhealthyThreshold: 2
+        timeoutMillis: 2000
+        intervalMillis: 5000
+  serviceDiscovery:
+    dns:
+      hostname: jazz-v1.default.svc.cluster.local
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: metal-v1
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: metal
+      version: v1
+  listeners:
+    - portMapping:
+        port: 9080
+        protocol: http
+      healthCheck:
+        protocol: http
+        path: '/ping'
+        healthyThreshold: 2
+        unhealthyThreshold: 2
+        timeoutMillis: 2000
+        intervalMillis: 5000
+  serviceDiscovery:
+    dns:
+      hostname: metal-v1.default.svc.cluster.local
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -79,20 +101,6 @@ spec:
           env:
             - name: "HW_RESPONSE"
               value: "[\"Astrud Gilberto\",\"Miles Davis\"]"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: dj
-  namespace: default
-  labels:
-    app: dj
-spec:
-  ports:
-  - port: 9080
-    name: http
-  selector:
-    app: dj
 ---
 apiVersion: v1
 kind: Service

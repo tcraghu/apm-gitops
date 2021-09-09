@@ -1,0 +1,49 @@
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualRouter
+metadata:
+  name: jazz-router
+  namespace: default
+spec:
+  listeners:
+    - portMapping:
+        port: 9080
+        protocol: http
+  routes:
+    - name: jazz-route
+      httpRoute:
+        match:
+          prefix: /
+        action:
+          weightedTargets:
+            - virtualNodeRef:
+                name: jazz-v1
+              weight: 100
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualRouter
+metadata:
+  name: metal-router
+  namespace: default
+spec:
+  listeners:
+    - portMapping:
+        port: 9080
+        protocol: http
+  routes:
+    - name: metal-route
+      httpRoute:
+        match:
+          prefix: /
+        action:
+          weightedTargets:
+            - virtualNodeRef:
+                name: metal-v1
+              weight: 100
+#          weightedTargets:
+#            - virtualNodeRef:
+#                name: metal-v1
+#              weight: 95
+#            - virtualNodeRef:
+#                name: metal-v2
+#              weight: 5 
