@@ -50,10 +50,13 @@ spec:
       version: red
   template:
     metadata:
+      annotations:
+        appmesh.k8s.aws/mesh: default-mesh
       labels:
         app: color
         version: red
     spec:
+      serviceAccount: appmesh-pod
       containers:
         - name: app
           image: "672518094988.dkr.ecr.us-west-2.amazonaws.com/hello-world:v1.0"
