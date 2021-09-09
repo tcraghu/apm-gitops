@@ -1,0 +1,65 @@
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: blue
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: color
+      version: blue
+  listeners:
+    - portMapping:
+        port: 8080
+        protocol: http
+      healthCheck:
+        protocol: http
+        path: "/"
+        healthyThreshold: 2
+        unhealthyThreshold: 2
+        timeoutMillis: 2000
+        intervalMillis: 5000
+  serviceDiscovery:
+    dns:
+      hostname: color-blue.default.svc.cluster.local
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: color-blue
+  namespace: default
+spec:
+  ports:
+    - port: 8080
+      name: http
+  selector:
+    app: color
+    version: blue
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: color
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: color
+        version: blue
+    spec:
+      containers:
+        - name: app
+          image: "672518094988.dkr.ecr.us-west-2.amazonaws.com/hello-world:v1.0"
+          ports:
+            - containerPort: 8080
+          env:
+            - name: "HW_RESPONSE"
+              value: "blue"
+---

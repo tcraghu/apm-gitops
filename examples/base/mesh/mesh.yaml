@@ -1,0 +1,16 @@
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: Mesh
+metadata:
+  name: default-mesh
+spec:
+  namespaceSelector:
+    matchLabels:
+      mesh: default-mesh
+#namespace must have following lables
+#kubectl label namespace default appmesh.k8s.aws/sidecarInjectorWebhook=enabled
+#kubectl label namespace default mesh=default-mesh
+#kubectl label namespace default gateway=ingress-gw
+#  labels:
+#    mesh: default-mesh
+#    gateway: ingress-gw
+#    appmesh.k8s.aws/sidecarInjectorWebhook: enabled
