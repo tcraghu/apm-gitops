@@ -29,6 +29,10 @@ spec:
   serviceDiscovery:
     dns:
       hostname: dj.default.svc.cluster.local
+  logging:
+    accessLog:
+      file:
+        path: "/dev/stdout"
 ---
 apiVersion: apps/v1
 kind: Deployment

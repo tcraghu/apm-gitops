@@ -1,27 +1,3 @@
-apiVersion: appmesh.k8s.aws/v1beta2
-kind: VirtualNode
-metadata:
-  name: jazz-v1
-  namespace: default
-spec:
-  podSelector:
-    matchLabels:
-      app: jazz
-      version: v1
-  listeners:
-    - portMapping:
-        port: 9080
-        protocol: http
-      healthCheck:
-        protocol: http
-        path: '/ping'
-        healthyThreshold: 2
-        unhealthyThreshold: 2
-        timeoutMillis: 2000
-        intervalMillis: 5000
-  serviceDiscovery:
-    dns:
-      hostname: jazz-v1.default.svc.cluster.local
 ---
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualNode
@@ -47,6 +23,39 @@ spec:
   serviceDiscovery:
     dns:
       hostname: metal-v1.default.svc.cluster.local
+  logging:
+    accessLog:
+      file:
+        path: "/dev/stdout"
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: jazz-v1
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: jazz
+      version: v1
+  listeners:
+    - portMapping:
+        port: 9080
+        protocol: http
+      healthCheck:
+        protocol: http
+        path: '/ping'
+        healthyThreshold: 2
+        unhealthyThreshold: 2
+        timeoutMillis: 2000
+        intervalMillis: 5000
+  serviceDiscovery:
+    dns:
+      hostname: jazz-v1.default.svc.cluster.local
+  logging:
+    accessLog:
+      file:
+        path: "/dev/stdout"
 ---
 apiVersion: apps/v1
 kind: Deployment
