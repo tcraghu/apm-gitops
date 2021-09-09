@@ -23,6 +23,10 @@ spec:
   serviceDiscovery:
     dns:
       hostname: color-blue.default.svc.cluster.local
+  logging:
+    accessLog:
+      file:
+        path: "/dev/stdout"
 ---
 apiVersion: v1
 kind: Service
