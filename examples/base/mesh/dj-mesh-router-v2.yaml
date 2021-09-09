@@ -38,12 +38,5 @@ spec:
         action:
           weightedTargets:
             - virtualNodeRef:
-                name: metal-v1
+                name: metal-v2
               weight: 100
-#          weightedTargets:
-#            - virtualNodeRef:
-#                name: metal-v1
-#              weight: 95
-#            - virtualNodeRef:
-#                name: metal-v2
-#              weight: 5 
