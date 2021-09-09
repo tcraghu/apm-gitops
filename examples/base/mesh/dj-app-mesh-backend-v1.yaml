@@ -65,6 +65,7 @@ spec:
         app: metal
         version: v1
     spec:
+      serviceAccount: appmesh-pod
       containers:
         - name: metal
           image: "672518094988.dkr.ecr.us-west-2.amazonaws.com/hello-world:v1.0"
@@ -92,6 +93,7 @@ spec:
         app: jazz
         version: v1
     spec:
+      serviceAccount: appmesh-pod
       containers:
         - name: jazz
           image: "672518094988.dkr.ecr.us-west-2.amazonaws.com/hello-world:v1.0"
