@@ -3,4 +3,4 @@ kind: Kustomization
 #namespace: default
 resources:
   - ../base/storage
-  #- ../base/mesh
+  - ../base/mesh
