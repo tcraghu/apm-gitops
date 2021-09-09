@@ -4,10 +4,12 @@ namespace: default
 resources:
   - dj-app-mesh.yaml
   - dj-app-mesh-frontend.yaml
-  - dj-app-mesh-backend-v1.yaml
-  - dj-app-mesh-backend-v2.yaml
-  #- dj-mesh-router-v1.yaml
+  - dj-app-mesh-metal-v1.yaml
+  - dj-app-mesh-jazz-v1.yaml
+  - dj-app-mesh-metal-v2.yaml
+  - dj-app-mesh-jazz-v2.yaml
+  - dj-mesh-router-v1.yaml
   #- dj-mesh-router-v1-95-v2-5.yaml
-  - dj-mesh-router-v1-5-v2-95.yaml
+  #- dj-mesh-router-v1-5-v2-95.yaml
   #- dj-mesh-router-v2.yaml
   

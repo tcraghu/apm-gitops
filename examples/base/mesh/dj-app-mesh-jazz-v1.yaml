@@ -1,0 +1,74 @@
+
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualNode
+metadata:
+  name: jazz-v1
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app: jazz
+      version: v1
+  listeners:
+    - portMapping:
+        port: 9080
+        protocol: http
+      healthCheck:
+        protocol: http
+        path: "/"
+        healthyThreshold: 2
+        unhealthyThreshold: 2
+        timeoutMillis: 2000
+        intervalMillis: 5000
+  serviceDiscovery:
+    dns:
+      hostname: jazz-v1.default.svc.cluster.local
+  logging:
+    accessLog:
+      file:
+        path: "/dev/stdout"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jazz-v1
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jazz
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: jazz
+        version: v1
+    spec:
+      serviceAccount: appmesh-pod
+      containers:
+        - name: jazz
+          image: "672518094988.dkr.ecr.us-west-2.amazonaws.com/hello-world:v1.0"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 9080
+          env:
+            - name: "HW_RESPONSE"
+              value: "[\"Astrud Gilberto\",\"Miles Davis\"]"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jazz-v1
+  namespace: default
+  labels:
+    app: jazz
+    version: v1
+spec:
+  ports:
+  - port: 9080
+    name: http
+  selector:
+    app: jazz
+    version: v1
