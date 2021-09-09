@@ -14,7 +14,7 @@ spec:
         protocol: http
       healthCheck:
         protocol: http
-        path: '/ping'
+        path: '/'
         healthyThreshold: 2
         unhealthyThreshold: 2
         timeoutMillis: 2000
