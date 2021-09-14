@@ -63,7 +63,7 @@ spec:
       serviceAccount: appmesh-pod
       containers:
         - name: app
-          image: "cwsakamoto/colorapp:appmesh-demo"
+          image: "672518094988.dkr.ecr.us-west-2.amazonaws.com/colorapp"
           ports:
             - containerPort: 9080
           env:
