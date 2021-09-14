@@ -63,10 +63,10 @@ spec:
       serviceAccount: appmesh-pod
       containers:
         - name: app
-          image: "672518094988.dkr.ecr.us-west-2.amazonaws.com/hello-world:v1.0"
+          image: "cwsakamoto/colorapp:appmesh-demo"
           ports:
             - containerPort: 9080
           env:
-            - name: "HW_RESPONSE"
+            - name: "COLOR"
               value: "blue"
 ---
