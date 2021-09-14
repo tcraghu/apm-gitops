@@ -15,7 +15,7 @@ spec:
         protocol: http
       healthCheck:
         protocol: http
-        path: "/"
+        path: "/ping"
         healthyThreshold: 2
         unhealthyThreshold: 2
         timeoutMillis: 2000
@@ -68,7 +68,7 @@ spec:
             - containerPort: 9080
           env:
             - name: "COLOR"
-              value: "blue"
-            - name: "PORT"
               value: "green"
+            - name: "PORT"
+              value: "9080"
 ---
