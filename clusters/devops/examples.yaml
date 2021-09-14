@@ -13,3 +13,6 @@ spec:
   path: ./examples/devops
   prune: true
   validation: client
+  postBuild:
+    substitute:
+      appmesh_color_demo_image: "vivekgoyal/colorapp:appmeshdemo"

@@ -63,7 +63,7 @@ spec:
       serviceAccount: appmesh-pod
       containers:
         - name: app
-          image: "vivekgoyal/colorapp:appmeshdemo"
+          image: "${appmesh_color_demo_image}"
           ports:
             - containerPort: 9080
           env:
