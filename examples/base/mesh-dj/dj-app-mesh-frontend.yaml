@@ -26,9 +26,6 @@ spec:
     - virtualService:
         virtualServiceRef:
           name: jazz
-    - virtualService:
-        virtualServiceRef:
-          name: rock
   serviceDiscovery:
     dns:
       hostname: dj.default.svc.cluster.local
@@ -79,3 +76,52 @@ spec:
   selector:
     app: dj
 ---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualService
+metadata:
+  name: jazz
+  namespace: default
+spec:
+  awsName: jazz.default.svc.cluster.local
+  provider:
+    virtualRouter:
+      virtualRouterRef:
+        name: jazz-router
+---
+apiVersion: appmesh.k8s.aws/v1beta2
+kind: VirtualService
+metadata:
+  name: metal
+  namespace: default
+spec:
+  awsName: metal.default.svc.cluster.local
+  provider:
+    virtualRouter:
+      virtualRouterRef:
+        name: metal-router
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jazz
+  namespace: default
+  labels:
+    app: jazz
+spec:
+  ports:
+    - port: 9080
+      name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: metal
+  namespace: default
+  labels:
+    app: metal
+spec:
+  ports:
+    - port: 9080
+      name: http
+---
+

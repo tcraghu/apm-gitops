@@ -40,24 +40,3 @@ spec:
             - virtualNodeRef:
                 name: metal-v1
               weight: 100
----
-apiVersion: appmesh.k8s.aws/v1beta2
-kind: VirtualRouter
-metadata:
-  name: rock-router
-  namespace: default
-spec:
-  listeners:
-    - portMapping:
-        port: 9080
-        protocol: http
-  routes:
-    - name: rock-route
-      httpRoute:
-        match:
-          prefix: /
-        action:
-          weightedTargets:
-            - virtualNodeRef:
-                name: rock-v1
-              weight: 100

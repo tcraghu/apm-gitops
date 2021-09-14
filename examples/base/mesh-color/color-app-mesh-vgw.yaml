@@ -8,6 +8,9 @@ spec:
   namespaceSelector:
     matchLabels:
       gateway: ingress-gw
+  gatewayRouteSelector:
+    matchLabels:
+      gateway: ingress-gw
   podSelector:
     matchLabels:
       app: ingress-gw
@@ -15,12 +18,18 @@ spec:
     - portMapping:
         port: 8088
         protocol: http
+  logging:
+    accessLog:
+      file:
+        path: "/dev/stdout"
 ---
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: GatewayRoute
 metadata:
   name: gateway-route-headers
   namespace: default
+  labels:
+    gateway: ingress-gw
 spec:
   httpRoute:
     match:
@@ -36,6 +45,8 @@ kind: GatewayRoute
 metadata:
   name: gateway-route-paths
   namespace: default
+  labels:
+    gateway: ingress-gw
 spec:
   httpRoute:
     match:
@@ -162,51 +173,86 @@ spec:
       priority: 10
       httpRoute:
         match:
-          prefix: /blue
+          prefix: "/blue"
         action:
           weightedTargets:
             - virtualNodeRef:
                 name: blue
               weight: 1
+        retryPolicy:
+          maxRetries: 4
+          perRetryTimeout:
+            unit: ms
+            value: 2000
+          httpRetryEvents:
+            - server-error
     - name: color-route-green
       priority: 20
       httpRoute:
         match:
-          prefix: /green
+          prefix: "/green"
         action:
           weightedTargets:
             - virtualNodeRef:
                 name: green
               weight: 1
+        retryPolicy:
+          maxRetries: 4
+          perRetryTimeout:
+            unit: ms
+            value: 2000
+          httpRetryEvents:
+            - server-error
     - name: color-route-red
       priority: 30
       httpRoute:
         match:
-          prefix: /red
+          prefix: "/red"
         action:
           weightedTargets:
             - virtualNodeRef:
                 name: red
               weight: 1
+        retryPolicy:
+          maxRetries: 4
+          perRetryTimeout:
+            unit: ms
+            value: 2000
+          httpRetryEvents:
+            - server-error
     - name: color-route-yellow
       priority: 40
       httpRoute:
         match:
-          prefix: /yellow
+          prefix: "/yellow"
         action:
           weightedTargets:
             - virtualNodeRef:
                 name: yellow
               weight: 1
+        retryPolicy:
+          maxRetries: 4
+          perRetryTimeout:
+            unit: ms
+            value: 2000
+          httpRetryEvents:
+            - server-error
     - name: color-route-white
       httpRoute:
         match:
-          prefix: /
+          prefix: "/"
         action:
           weightedTargets:
             - virtualNodeRef:
                 name: white
               weight: 1
+        retryPolicy:
+          maxRetries: 4
+          perRetryTimeout:
+            unit: ms
+            value: 2000
+          httpRetryEvents:
+            - server-error
 ---
 apiVersion: v1
 kind: Service
@@ -234,7 +280,9 @@ metadata:
   name: ingress-gw
   namespace: default
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-type: "external"
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
 spec:
   type: LoadBalancer
   ports:
