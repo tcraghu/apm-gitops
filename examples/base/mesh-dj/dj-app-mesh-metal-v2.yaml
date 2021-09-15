@@ -54,7 +54,7 @@ spec:
             - containerPort: 9080
           env:
             - name: "HW_RESPONSE"
-              value: '["Megadeth (Los Angeles, California)","Judas Priest (West Bromwich, England)"]'
+              value: '["metal-v2", "Megadeth (Los Angeles, California)","Judas Priest (West Bromwich, England)"]'
 ---
 apiVersion: v1
 kind: Service
