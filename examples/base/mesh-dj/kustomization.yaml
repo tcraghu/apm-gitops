@@ -9,6 +9,6 @@ resources:
   - dj-app-mesh-jazz-v2.yaml
   #- dj-mesh-router-v1.yaml
   #- dj-mesh-router-v1-95-v2-5.yaml
-  - dj-mesh-router-v1-5-v2-95.yaml
-  #- dj-mesh-router-v2.yaml
+  #- dj-mesh-router-v1-5-v2-95.yaml
+  - dj-mesh-router-v2.yaml
   
