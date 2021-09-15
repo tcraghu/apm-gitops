@@ -3,7 +3,7 @@ apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualRouter
 metadata:
   name: jazz-router
-  namespace: default
+  namespace: ${ks_namespace}
 spec:
   listeners:
     - portMapping:
@@ -27,7 +27,7 @@ apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualRouter
 metadata:
   name: metal-router
-  namespace: default
+  namespace: ${ks_namespace}
 spec:
   listeners:
     - portMapping:

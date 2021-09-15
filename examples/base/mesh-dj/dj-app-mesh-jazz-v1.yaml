@@ -4,7 +4,7 @@ apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualNode
 metadata:
   name: jazz-v1
-  namespace: default
+  namespace: ${ks_namespace}
 spec:
   podSelector:
     matchLabels:
@@ -23,7 +23,7 @@ spec:
         intervalMillis: 5000
   serviceDiscovery:
     dns:
-      hostname: jazz-v1.default.svc.cluster.local
+      hostname: jazz-v1.${ks_namespace}.svc.cluster.local
   logging:
     accessLog:
       file:
@@ -33,7 +33,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: jazz-v1
-  namespace: default
+  namespace: ${ks_namespace}
 spec:
   replicas: 1
   selector:
@@ -61,7 +61,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: jazz-v1
-  namespace: default
+  namespace: ${ks_namespace}
   labels:
     app: jazz
     version: v1

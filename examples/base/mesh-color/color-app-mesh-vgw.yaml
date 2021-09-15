@@ -3,7 +3,7 @@ apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualGateway
 metadata:
   name: ingress-gw
-  namespace: default
+  namespace: ${ks_namespace}
 spec:
   namespaceSelector:
     matchLabels:
@@ -27,7 +27,7 @@ apiVersion: appmesh.k8s.aws/v1beta2
 kind: GatewayRoute
 metadata:
   name: gateway-route-headers
-  namespace: default
+  namespace: ${ks_namespace}
   labels:
     gateway: ingress-gw
 spec:
@@ -44,7 +44,7 @@ apiVersion: appmesh.k8s.aws/v1beta2
 kind: GatewayRoute
 metadata:
   name: gateway-route-paths
-  namespace: default
+  namespace: ${ks_namespace}
   labels:
     gateway: ingress-gw
 spec:
@@ -61,9 +61,9 @@ apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualService
 metadata:
   name: color-headers
-  namespace: default
+  namespace: ${ks_namespace}
 spec:
-  awsName: color-headers.default.svc.cluster.local
+  awsName: color-headers.${ks_namespace}.svc.cluster.local
   provider:
     virtualRouter:
       virtualRouterRef:
@@ -73,9 +73,9 @@ apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualService
 metadata:
   name: color-paths
-  namespace: default
+  namespace: ${ks_namespace}
 spec:
-  awsName: color-paths.default.svc.cluster.local
+  awsName: color-paths.${ks_namespace}.svc.cluster.local
   provider:
     virtualRouter:
       virtualRouterRef:
@@ -84,7 +84,7 @@ spec:
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualRouter
 metadata:
-  namespace: default
+  namespace: ${ks_namespace}
   name: color-headers
 spec:
   listeners:
@@ -150,7 +150,7 @@ spec:
     - name: color-route-white
       httpRoute:
         match:
-          #default match with no priority
+          #match with no priority
           prefix: /
         action:
           weightedTargets:
@@ -161,7 +161,7 @@ spec:
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualRouter
 metadata:
-  namespace: default
+  namespace: ${ks_namespace}
   name: color-paths
 spec:
   listeners:
@@ -258,7 +258,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: color-headers
-  namespace: default
+  namespace: ${ks_namespace}
 spec:
   ports:
     - port: 9080
@@ -268,7 +268,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: color-paths
-  namespace: default
+  namespace: ${ks_namespace}
 spec:
   ports:
     - port: 9080
@@ -278,7 +278,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: ingress-gw
-  namespace: default
+  namespace: ${ks_namespace}
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "external"
     service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: "ip"
@@ -296,7 +296,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ingress-gw
-  namespace: default
+  namespace: ${ks_namespace}
 spec:
   replicas: 1
   selector:
