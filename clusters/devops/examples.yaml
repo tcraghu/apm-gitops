@@ -15,4 +15,7 @@ spec:
   validation: client
   postBuild:
     substitute:
+      cluster_env: "dev"
+      cluster_name: "devops"
+      ks_namespace: "default"
       appmesh_color_demo_image: "vivekgoyal/colorapp:appmeshdemo"
