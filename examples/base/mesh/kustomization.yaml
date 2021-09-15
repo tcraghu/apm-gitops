@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: ${ks_namespace}
 resources:
   - mesh.yaml
-  #- ../mesh-dj
+  - ../mesh-dj
   - ../mesh-color
   
