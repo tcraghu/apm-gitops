@@ -4,5 +4,6 @@ namespace: flux-system
 resources:
   - secrets.yaml
   - eks-charts.yaml
+  - flagger.yaml
   - aws-storage-driver.yaml
   - prometheus.yaml
