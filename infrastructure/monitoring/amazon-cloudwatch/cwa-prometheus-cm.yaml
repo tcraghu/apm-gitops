@@ -106,7 +106,7 @@ data:
                 {
                   "source_labels": ["container_name"],
                   "label_matcher": "^envoy$",
-                  "dimensions": [["ClusterName","Namespace"]],
+                  "dimensions": [["ClusterName","Namespace","app","version"]],
                   "metric_selectors": [
                     "^envoy_http_downstream_rq_(total|xx)$",
                     "^envoy_cluster_upstream_cx_(r|t)x_bytes_total$",
@@ -124,7 +124,7 @@ data:
                 {
                   "source_labels": ["container_name"],
                   "label_matcher": "^envoy$",
-                  "dimensions": [["ClusterName","Namespace","envoy_http_conn_manager_prefix","envoy_response_code_class"]],
+                  "dimensions": [["ClusterName","Namespace","envoy_http_conn_manager_prefix","envoy_response_code_class","app","version"]],
                   "metric_selectors": [
                     "^envoy_http_downstream_rq_xx$"
                   ]
