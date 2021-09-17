@@ -17,5 +17,5 @@ spec:
     substitute:
       cluster_env: "devops"
       cluster_name: "devops"
-      ks_namespace: "default"
+      example_namespace: "default"
       appmesh_color_demo_image: "vivekgoyal/colorapp:appmeshdemo"

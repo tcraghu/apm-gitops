@@ -1,16 +1,16 @@
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: Mesh
 metadata:
-  name: ${ks_namespace}-mesh
+  name: ${example_namespace}-mesh
 spec:
   namespaceSelector:
     matchLabels:
-      mesh: ${ks_namespace}-mesh
+      mesh: ${example_namespace}-mesh
 #namespace must have following lables
-#kubectl label namespace ${ks_namespace} appmesh.k8s.aws/sidecarInjectorWebhook=enabled
-#kubectl label namespace ${ks_namespace} mesh=${ks_namespace}-mesh
-#kubectl label namespace ${ks_namespace} gateway=ingress-gw
+#kubectl label namespace ${example_namespace} appmesh.k8s.aws/sidecarInjectorWebhook=enabled
+#kubectl label namespace ${example_namespace} mesh=${example_namespace}-mesh
+#kubectl label namespace ${example_namespace} gateway=ingress-gw
 #  labels:
-#    mesh: ${ks_namespace}-mesh
+#    mesh: ${example_namespace}-mesh
 #    gateway: ingress-gw
 #    appmesh.k8s.aws/sidecarInjectorWebhook: enabled
