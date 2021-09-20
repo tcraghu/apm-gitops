@@ -9,5 +9,5 @@ metadata:
     appmesh.k8s.aws/sidecarInjectorWebhook: enabled
   annotations:
     # annotation key is configurable
-    externalsecrets.kubernetes-client.io/permitted-key-name: "/${cluster_env}/${cluster_name}/${example_namespace}/.*"
+    externalsecrets.kubernetes-client.io/permitted-key-name: "/${cluster_env}/${cluster_name}-eks-cluster/${example_namespace}/.*"
 
