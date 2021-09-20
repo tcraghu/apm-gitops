@@ -1,9 +1,9 @@
 # Blue/Green or Canary Deployment using AWS App Mesh
 This example is inspired by [aws-app-mesh-examples](https://github.com/aws/aws-app-mesh-examples) example [howto-k8s-ingress-gateway](https://github.com/aws/aws-app-mesh-examples/tree/master/walkthroughs/howto-k8s-ingress-gateway). 
 
-AWS App Mesh is used to virtualize the five (blue, green, red, yellow, and white) color services. `VirtualGateway` is created using the `Envoy` based service `ingress-gw`. Two `GatewayRoute` are created, where the prefix `/path` is configured to use the `prefix` based routing while the prefix `/headers` is configured to to use `header` based routing.
+AWS App Mesh is used to virtualize the five (blue, green, red, yellow, and white) color services. `VirtualGateway` is created using the `Envoy` based service `ingress-gw`. Two `GatewayRoute` are created, where the prefix `/paths` is configured to use the `prefix` based routing while the prefix `/headers` is configured to to use `header` based routing.
 
-![](./image/VirtualGateway.png)
+![](./image/DeploymentStrategies-VirtualGateway.png)
 
 ## Test `prefix` and `header` based routing
 
