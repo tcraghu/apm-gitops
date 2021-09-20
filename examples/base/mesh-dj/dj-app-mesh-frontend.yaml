@@ -1,6 +1,6 @@
 ---
 #test
-#while true ; do curl -s metal.default.svc.cluster.local:9080 ; echo ; curl -s jazz.default.svc.cluster.local:9080 ; echo ; sleep 1 ; done 
+#while true ; do curl -s metal.example.svc.cluster.local:9080 ; echo ; curl -s jazz.example.svc.cluster.local:9080 ; echo ; sleep 1 ; done 
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: VirtualNode
 metadata:

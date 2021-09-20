@@ -4,5 +4,5 @@ namespace: ${example_namespace}
 resources:
   - mesh.yaml
   - ../mesh-dj
-  #- ../mesh-color
+  - ../mesh-color
   

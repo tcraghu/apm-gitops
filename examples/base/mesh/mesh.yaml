@@ -6,11 +6,4 @@ spec:
   namespaceSelector:
     matchLabels:
       mesh: ${example_namespace}-mesh
-#namespace must have following lables
-#kubectl label namespace ${example_namespace} appmesh.k8s.aws/sidecarInjectorWebhook=enabled
-#kubectl label namespace ${example_namespace} mesh=${example_namespace}-mesh
-#kubectl label namespace ${example_namespace} gateway=ingress-gw
-#  labels:
-#    mesh: ${example_namespace}-mesh
-#    gateway: ingress-gw
-#    appmesh.k8s.aws/sidecarInjectorWebhook: enabled
+
