@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
   - ../base/secrets
   - ../base/storage
-  - ../base/mesh
+  #- ../base/mesh
