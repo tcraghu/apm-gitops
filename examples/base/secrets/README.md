@@ -6,4 +6,4 @@ Four `ExternalSecret` examples are created.
 * `some-ns-params` --> Non-working secret from System Manager Parameter Store because it is trying to get secret from other namespace
 
 ## Prerequisites
-Kubernetes External Secrets is installed and configured correctly in `./infrastructure/secrets`
+Kubernetes External Secrets is installed and configured correctly in `./infrastructure/secrets` and is active.

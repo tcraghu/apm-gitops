@@ -1,3 +1,7 @@
+---
+# create the common AWS App Mesh Mesh that will be used by all Mesh examples
+# When the mesh created, along with Kubernetes Mesh resources, AWS App Mesh resources are also created.
+# Sometimes App Mesh controller is not able to delete the AWS App Mesh resources, use the *.ps1 scripts to clean the AWS App Mesh resources.
 apiVersion: appmesh.k8s.aws/v1beta2
 kind: Mesh
 metadata:

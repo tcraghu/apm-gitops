@@ -1,4 +1,7 @@
 ---
+# The ./clusters/<cluster-name>/examples.yaml specifies the value for example_namespace. e.g. 'example'
+# Create the example_namespace with needed lables to support AWS Appmesh and annotations to support Kubernetes External Secrets.
+# These labels and annotations will be required in each application namespace that requie AWS Appmesh and Kubernetes External Secrets.
 apiVersion: v1
 kind: Namespace
 metadata:
