@@ -5,4 +5,4 @@ resources:
   - ../base/namespace.yaml
   - ../base/secrets
   - ../base/storage
-  #- ../base/mesh
+  - ../base/mesh
