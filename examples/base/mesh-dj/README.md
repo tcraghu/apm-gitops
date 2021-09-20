@@ -1,7 +1,10 @@
 # Blue/Green or Canary Deployment using AWS App Mesh
-This example is inspired by [aws-app-mesh-examples](https://github.com/aws/aws-app-mesh-examples) example [DJ App](https://github.com/aws/aws-app-mesh-examples/tree/main/examples/apps/djapp). 
+This example is inspired by [aws-app-mesh-examples](https://github.com/aws/aws-app-mesh-examples) example [DJ App](https://github.com/aws/aws-app-mesh-examples/tree/main/examples/apps/djapp). [EKS Workshop](https://www.eksworkshop.com/intermediate/330_app_mesh/) also mentions this example without GitOps.
 
-AWS App Mesh is used to virtualize the metal and jazz service. Four router files are provided that configure the `VirtualRouter` as per the requirement to route weighted traffic to v1 or v2 version of the backend service.
+AWS App Mesh is used to virtualize the metal and jazz service. 
+![](https://raw.githubusercontent.com/aws/aws-app-mesh-examples/main/examples/apps/djapp/img/155-v2-with-mesh-and-cp.png)
+
+Four router files are provided that configure the `VirtualRouter` as per the requirement to route weighted traffic to v1 or v2 version of the backend service.
 
 File | Routing Rule
 ---|---
