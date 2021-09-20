@@ -213,7 +213,7 @@ dj-mesh-router-v2.yaml | All traffic to version v2
 
 ## Test via DJ App (frontend testing)
 <details>
-<summary>Find the `dj` pod</summary>
+<summary>Find the "dj" pod</summary>
 
 ```
 #kubectl get pods -l app=dj -n ${example_namespace}
@@ -226,7 +226,7 @@ dj-76cfdcd9d-cgs9j   3/3     Running   0          157m
 </details>
 
 <details>
-<summary>Get a shell into the `dj` container</summary>
+<summary>Get a shell into the "dj" container</summary>
 
 ```
 #kubectl exec -it <dj-pod-name> -n ${example_namespace} -c dj -- bash
@@ -259,6 +259,78 @@ while true ; do curl -s metal.example.svc.cluster.local:9080 ; echo ; curl -s ja
 ["metal-v1", "Megadeth","Judas Priest"]
 ["jazz-v1", "Astrud Gilberto","Miles Davis"]
 ...
+```
+</details>
+
+<details>
+<summary>Exit from the container shell</summary>
+
+```
+exit
+
+command terminated with exit code 130
+```
+</details>
+
+## Test the Backend service
+<details>
+<summary>Find the backend pod e.g. "metal-v2" or "jazz-v2"</summary>
+
+```
+#kubectl get pods -l app=metal,version=v2 -n ${example_namespace}
+#kubectl get pods -l app=jazz,version=v2 -n ${example_namespace}
+#kubectl get pods -l version=v2 -n ${example_namespace}
+#e.g.
+kubectl get pods -l app=metal,version=v2 -n example
+  
+NAME                 READY   STATUS    RESTARTS   AGE
+metal-v2-559ccf895b-qcrc5   3/3     Running   0          157m
+
+kubectl get pods -l app=jazz,version=v2 -n example
+  
+NAME                 READY   STATUS    RESTARTS   AGE
+jazz-v2-5778768565-blqrx   3/3     Running   0          162m
+
+#or
+kubectl get pods -l version=v2 -n example
+  
+NAME                 READY   STATUS    RESTARTS   AGE
+metal-v2-559ccf895b-qcrc5   3/3     Running   0          157m
+jazz-v2-5778768565-blqrx   3/3     Running   0          162m
+```
+</details>
+
+<details>
+<summary>Get a shell into the backend container</summary>
+
+```
+#kubectl exec -it <metal-pod-name> -n ${example_namespace} -c metal -- bash
+#kubectl exec -it <jazz-pod-name> -n ${example_namespace} -c jazz -- bash
+#e.g.
+kubectl exec -it metal-v2-559ccf895b-qcrc5 -n example -c metal -- bash
+
+root@metal-v2-559ccf895b-qcrc5:/usr/src/app#
+
+#or
+kubectl exec -it jazz-v2-5778768565-blqrx -n example -c jazz -- bash
+
+root@jazz-v2-5778768565-blqrx:/usr/src/app# 
+```
+</details>
+
+<details>
+<summary>Test the backend container</summary>
+
+```
+#metal
+curl -s localhost:9080 ; echo ;
+
+["metal-v2", "Megadeth (Los Angeles, California)","Judas Priest (West Bromwich, England)"]
+
+#jazz
+curl -s localhost:9080 ; echo ;
+
+["jazz-v2", "Astrud Gilberto (Bahia, Brazil)","Miles Davis (Alton, Illinois)"]
 ```
 </details>
 
