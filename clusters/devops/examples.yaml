@@ -11,7 +11,7 @@ spec:
     kind: GitRepository
     name: flux-system
   path: ./examples/devops
-  prune: true
+  prune: false
   validation: client
   postBuild:
     substitute:
