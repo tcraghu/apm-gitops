@@ -104,7 +104,6 @@ dj-mesh-router-v2.yaml | All traffic to version v2
 
 ## Canary Deployment
 
-![](./image/DeploymentStrategies-Canary.png)
 <img src="./image/DeploymentStrategies-Canary.png" width="1024px"/>
 
 * Modify `kustomization.yaml` such that only version v1 is running with dj-mesh-router-v1.yaml. This is initial state where all traffic is pointing to version v1.
@@ -212,3 +211,48 @@ dj-mesh-router-v2.yaml | All traffic to version v2
     ```
     </details>
 
+## Test via DJ App (frontend testing)
+* Find the `dj` pod
+    ```
+    #kubectl get pods -l app=dj -n ${example_namespace}
+    #e.g.
+    kubectl get pods -l app=dj -n example
+    
+    NAME                 READY   STATUS    RESTARTS   AGE
+    dj-76cfdcd9d-cgs9j   3/3     Running   0          157m
+    ```
+* Get a shell into the `dj` container
+    ```
+    #kubectl exec -it <dj-pod-name> -n ${example_namespace} -c dj -- bash
+    #e.g.
+    kubectl exec -it dj-76cfdcd9d-cgs9j -n example -c dj -- bash
+
+    root@dj-76cfdcd9d-cgs9j:/usr/src/app#
+    ```
+* Test the backend services
+    ```
+    #curl -s metal.${example_namespace}.svc.cluster.local:9080 ; echo ;
+    #curl -s jazz.${example_namespace}.svc.cluster.local:9080 ; echo ;
+    #e.g.
+    curl -s metal.example.svc.cluster.local:9080 ; echo ;
+
+    ["metal-v1", "Megadeth","Judas Priest"]
+
+    curl -s jazz.example.svc.cluster.local:9080 ; echo ;
+
+    ["jazz-v1", "Astrud Gilberto","Miles Davis"]
+
+    while true ; do curl -s metal.example.svc.cluster.local:9080 ; echo ; curl -s jazz.example.svc.cluster.local:9080 ; echo ; sleep 1 ; done 
+
+    ["metal-v1", "Megadeth","Judas Priest"]
+    ["jazz-v1", "Astrud Gilberto","Miles Davis"]
+    ["metal-v1", "Megadeth","Judas Priest"]
+    ["jazz-v1", "Astrud Gilberto","Miles Davis"]
+    ...
+    ```
+* Exit from the container shell
+    ```
+    exit
+
+    command terminated with exit code 130
+    ```
