@@ -16,6 +16,8 @@ dj-mesh-router-v2.yaml | All traffic to version v2
 
 ## Blue/Green Deployment
 
+![](./image/DeploymentStrategies-Blue-Green.png)
+
 * Modify `kustomization.yaml` such that only version v1 is running with dj-mesh-router-v1.yaml. This is `blue` state where all traffic is pointing to version v1.
     <details>
     <summary>All traffic to version v1</summary>
@@ -101,6 +103,8 @@ dj-mesh-router-v2.yaml | All traffic to version v2
     </details>
 
 ## Canary Deployment
+
+![](./image/DeploymentStrategies-Canary.png)
 
 * Modify `kustomization.yaml` such that only version v1 is running with dj-mesh-router-v1.yaml. This is initial state where all traffic is pointing to version v1.
     <details>
