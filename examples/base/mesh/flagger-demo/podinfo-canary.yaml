@@ -2,7 +2,7 @@ apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: podinfo
-  namespace: ${example_namespace}
+  namespace: example
 spec:
   # App Mesh API reference
   provider: appmesh:v1beta2

@@ -4,5 +4,6 @@ namespace: ${example_namespace}
 resources:
   #podinfo
   - podinfo.yaml
+  - podinfo-canary.yaml
   #podinfo load-tester
   - flagger-loadtester.yaml
