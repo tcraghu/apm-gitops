@@ -16,6 +16,7 @@ spec:
     remediation:
       retries: 3
   values:
+    serviceAccountName: "appmesh-pod"
     # App Mesh virtual node settings (to be used for AppMesh v1beta2)
     appmesh:
       enabled: true
