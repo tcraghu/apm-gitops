@@ -4,6 +4,6 @@ namespace: amazon-cloudwatch
 resources:
   - namespace.yaml
   - serviceaccount.yaml
-  #- cwa-prometheus-cm.yaml
-  #- cwa-prometheus.yaml
+  - cwa-prometheus-cm.yaml
+  - cwa-prometheus.yaml
   
