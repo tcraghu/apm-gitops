@@ -3,6 +3,12 @@ kind: Kustomization
 namespace: appmesh-system
 resources:
   - https://github.com/aws/eks-charts/stable/appmesh-controller//crds?ref=master
-  - release.yaml
+  - appmesh-controller.yaml
+  #- prometheus-storage.yaml
+  #- appmesh-prometheus.yaml
+  - https://raw.githubusercontent.com/fluxcd/flagger/main/artifacts/flagger/crd.yaml
+  - flagger.yaml
 patchesStrategicMerge:
-  - values.yaml
+  - appmesh-controller-values.yaml
+  #- appmesh-prometheus-values.yaml  
+  - flagger-values.yaml  

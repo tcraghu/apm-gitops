@@ -1,0 +1,12 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: appmesh-prometheus
+spec:
+  releaseName: appmesh-prometheus
+  values:
+    retention: 6h
+    persistentVolumeClaim:
+      # persistentVolumeClaim.claimName: Specify an existing volume claim to be used for Prometheus data
+      claimName: "prometheus-pvc"
