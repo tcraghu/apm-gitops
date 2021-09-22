@@ -3,6 +3,6 @@ kind: Kustomization
 namespace: ${example_namespace}
 resources:
   #podinfo
-  - https://github.com/fluxcd/flagger//kustomize/podinfo?ref=main
+  - podinfo.yaml
   #podinfo load-tester
   - flagger-loadtester.yaml
