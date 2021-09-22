@@ -65,7 +65,7 @@ spec:
       timeout: 30s
       metadata:
         type: bash
-        cmd: "curl -sd 'test' http://podinfo-canary.test:9898/token | grep token"
+        cmd: "curl -sd 'test' http://podinfo-canary.example:9898/token | grep token"
     - name: load-test
       url: http://flagger-loadtester.example/
       timeout: 5s

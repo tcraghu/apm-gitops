@@ -5,8 +5,8 @@ metadata:
 spec:
   releaseName: flagger 
   values:
-    #metricsServer: "http://appmesh-prometheus:9090"
-    metricsServer: ""
+    metricsServer: "http://appmesh-prometheus:9090"
+    #metricsServer: ""
 
     # accepted values are kubernetes, istio, linkerd, appmesh, contour, nginx, gloo, skipper, traefik, osm
     meshProvider: "appmesh:v1beta2"
