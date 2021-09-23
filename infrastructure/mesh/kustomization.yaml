@@ -5,10 +5,10 @@ resources:
   - https://github.com/aws/eks-charts/stable/appmesh-controller//crds?ref=master
   - appmesh-controller.yaml
   - prometheus-storage.yaml
-  #- appmesh-prometheus.yaml
+  - appmesh-prometheus.yaml
   #- https://raw.githubusercontent.com/fluxcd/flagger/main/artifacts/flagger/crd.yaml
   #- flagger.yaml
 patchesStrategicMerge:
   - appmesh-controller-values.yaml
-  #- appmesh-prometheus-values.yaml  
+  - appmesh-prometheus-values.yaml  
   #- flagger-values.yaml  
