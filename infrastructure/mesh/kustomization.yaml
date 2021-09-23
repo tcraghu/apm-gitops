@@ -6,9 +6,9 @@ resources:
   - appmesh-controller.yaml
   - prometheus-storage.yaml
   - appmesh-prometheus.yaml
-  #- https://raw.githubusercontent.com/fluxcd/flagger/main/artifacts/flagger/crd.yaml
-  #- flagger.yaml
+  - https://raw.githubusercontent.com/fluxcd/flagger/main/artifacts/flagger/crd.yaml
+  - flagger.yaml
 patchesStrategicMerge:
   - appmesh-controller-values.yaml
   - appmesh-prometheus-values.yaml  
-  #- flagger-values.yaml  
+  - flagger-values.yaml  
