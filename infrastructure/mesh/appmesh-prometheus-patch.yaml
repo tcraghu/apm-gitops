@@ -21,16 +21,16 @@ spec:
         app.kubernetes.io/name: appmesh-prometheus
     spec:
       containers:
-        name: appmesh-prometheus
-        livenessProbe:
-          failureThreshold: 3
-          initialDelaySeconds: 120
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
-        readinessProbe:
-          failureThreshold: 3
-          initialDelaySeconds: 120
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
+        - name: appmesh-prometheus
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          readinessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 120
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
