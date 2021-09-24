@@ -5,5 +5,5 @@ resources:
   - mesh.yaml
   - mesh-dj
   #- mesh-color
-  #- flagger-demo
+  - flagger-demo
   
