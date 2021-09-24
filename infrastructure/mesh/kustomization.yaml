@@ -15,8 +15,7 @@ patchesStrategicMerge:
 patches:
 - path: appmesh-prometheus-patch.yaml  
   target:
-    version: v1
     kind: Deployment
     name: appmesh-prometheus
     namespace: appmesh-system
-    labelSelector: "app.kubernetes.io/instance=appmesh-prometheus,app.kubernetes.io/name: appmesh-prometheus"
+    #labelSelector: "app.kubernetes.io/instance=appmesh-prometheus,app.kubernetes.io/name: appmesh-prometheus"
