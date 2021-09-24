@@ -2,10 +2,9 @@
 This example is inspired by [Flagger Blue/Green Deployments](https://docs.flagger.app/tutorials/kubernetes-blue-green) example. `stefanprodan/podinfo` image is used to create the `podinfo` pod and `podinfo` canary. Flagger [orchestrates](https://docs.flagger.app/usage/deployment-strategies#blue-green-deployments) the promotion of a new image through Blue/Green deployment defined in the `canary` custom resource using the App Mesh and App Mesh Prometheus.
 
 ## Blue/Green Deployment
-<figure>
-<img src="https://raw.githubusercontent.com/fluxcd/flagger/main/docs/diagrams/flagger-bluegreen-steps.png" width="600px"/>
-<figcaption align = "center">Flagger Blue/Green Stages</figcaption>
-</figure>
+| ![](https://raw.githubusercontent.com/fluxcd/flagger/main/docs/diagrams/flagger-bluegreen-steps.png)|
+|:--:|
+|Flagger Blue/Green Stages|
 
 * Modify `podinfo.yaml` change `image: stefanprodan/podinfo:3.1.0` to `image: stefanprodan/podinfo:3.1.1` and commit/push to git.
     <details>
