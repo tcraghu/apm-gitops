@@ -11,5 +11,5 @@ resources:
 patchesStrategicMerge:
   - appmesh-controller-values.yaml
   - appmesh-prometheus-values.yaml  
-  - appmesh-prometheus-patch.yaml  
+  #- appmesh-prometheus-patch.yaml  
   - flagger-values.yaml  
