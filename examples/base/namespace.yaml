@@ -11,6 +11,8 @@ metadata:
     gateway: ingress-gw
     appmesh.k8s.aws/sidecarInjectorWebhook: enabled
   annotations:
+    #do not prune the namespace
+    kustomize.toolkit.fluxcd.io/prune: disabled
     # annotation key is configurable
     externalsecrets.kubernetes-client.io/permitted-key-name: "/${cluster_env}/${cluster_name}-eks-cluster/${example_namespace}/.*"
 
