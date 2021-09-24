@@ -5,8 +5,8 @@ metadata:
   labels:
     app.kubernetes.io/instance: appmesh-prometheus
     app.kubernetes.io/name: appmesh-prometheus
-  annotations:
-    kustomize.toolkit.fluxcd.io/prune: disabled
+  #annotations:
+  #  kustomize.toolkit.fluxcd.io/prune: disabled
   name: appmesh-prometheus
   namespace: appmesh-system
 spec:
