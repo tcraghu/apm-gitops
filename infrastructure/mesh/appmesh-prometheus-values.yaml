@@ -10,3 +10,11 @@ spec:
     persistentVolumeClaim:
       # persistentVolumeClaim.claimName: Specify an existing volume claim to be used for Prometheus data
       claimName: "prometheus-pvc"
+    resources:
+      limits:
+        cpu: 2000m
+        memory: 4Gi
+      requests:
+        cpu: 100m
+        memory: 512Mi
+    
