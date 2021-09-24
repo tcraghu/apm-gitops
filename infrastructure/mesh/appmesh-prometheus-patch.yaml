@@ -7,10 +7,6 @@ metadata:
   name: appmesh-prometheus
   namespace: appmesh-system
 spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/instance: appmesh-prometheus
-      app.kubernetes.io/name: appmesh-prometheus
   template:
     spec:
       containers:

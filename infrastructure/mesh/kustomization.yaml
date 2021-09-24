@@ -11,5 +11,12 @@ resources:
 patchesStrategicMerge:
   - appmesh-controller-values.yaml
   - appmesh-prometheus-values.yaml  
-  - appmesh-prometheus-patch.yaml  
   - flagger-values.yaml  
+patches:
+- path: appmesh-prometheus-patch.yaml  
+  target:
+    version: v1
+    kind: Deployment
+    name: appmesh-prometheus
+    namespace: appmesh-system
+    labelSelector: "app.kubernetes.io/instance=appmesh-prometheus,app.kubernetes.io/name: appmesh-prometheus"
