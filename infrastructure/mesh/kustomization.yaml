@@ -13,29 +13,29 @@ patchesStrategicMerge:
   - appmesh-prometheus-values.yaml  
   #- appmesh-prometheus-patch.yaml
   - flagger-values.yaml  
-  - |-
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: appmesh-prometheus
-      namespace: appmesh-system
-    spec:
-      template:
-        spec:
-          containers:
-            - name: appmesh-prometheus
-              livenessProbe:
-                failureThreshold: 3
-                initialDelaySeconds: 120
-                periodSeconds: 10
-                successThreshold: 1
-                timeoutSeconds: 1
-              readinessProbe:
-                failureThreshold: 3
-                initialDelaySeconds: 120
-                periodSeconds: 10
-                successThreshold: 1
-                timeoutSeconds: 1
+  #- |-
+  #  apiVersion: apps/v1
+  #  kind: Deployment
+  #  metadata:
+  #    name: appmesh-prometheus
+  #    namespace: appmesh-system
+  #  spec:
+  #    template:
+  #      spec:
+  #        containers:
+  #          - name: appmesh-prometheus
+  #            livenessProbe:
+  #              failureThreshold: 3
+  #              initialDelaySeconds: 120
+  #              periodSeconds: 10
+  #              successThreshold: 1
+  #              timeoutSeconds: 1
+  #            readinessProbe:
+  #              failureThreshold: 3
+  #              initialDelaySeconds: 120
+  #              periodSeconds: 10
+  #              successThreshold: 1
+  #              timeoutSeconds: 1
 #patches:
 #- path: appmesh-prometheus-patch.yaml
 #  target:
