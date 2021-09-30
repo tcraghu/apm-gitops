@@ -11,7 +11,7 @@ File | Routing Rule
 ---|---
 dj-mesh-router-v1.yaml | All traffic to version v1
 dj-mesh-router-v1-5-v2-95.yaml | 5% traffic to version v1, 95% traffic to version v2
-dj-mesh-router-v1-95-v2-55.yaml | 95% traffic to version v1, 5% traffic to version v2
+dj-mesh-router-v1-95-v2-5.yaml | 95% traffic to version v1, 5% traffic to version v2
 dj-mesh-router-v2.yaml | All traffic to version v2
 
 ## Blue/Green Deployment
